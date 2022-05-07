@@ -7,6 +7,8 @@
 
 import Foundation
 
+let dataPerson = DataManager()
+
 struct Person {
     let name: String
     let lastname: String
@@ -18,47 +20,21 @@ struct Person {
     }
     
     static func getPerson() -> [Person] {
-        [
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? ""),
-            Person(name: names.randomElement() ?? "",
-                   lastname: lastnames.randomElement() ?? "",
-                   phone: phones.randomElement() ?? "",
-                   email: emails.randomElement() ?? "")
-        ]
+
+        var persons: [Person] = []
+        
+        let count = min(dataPerson.names.count, dataPerson.lastnames.count, dataPerson.phones.count, dataPerson.emails.count)
+
+        for _ in 0..<count {
+            let name = dataPerson.names.randomElement() ?? ""
+            let lastname = dataPerson.lastnames.randomElement() ?? ""
+            let phone = dataPerson.phones.randomElement() ?? ""
+            let email = dataPerson.emails.randomElement() ?? ""
+
+            persons.append(Person(name: name, lastname: lastname, phone: phone, email: email))
+        }
+
+        return persons
     }
 }
+
